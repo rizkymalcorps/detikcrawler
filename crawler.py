@@ -13,13 +13,13 @@ if r.status_code == 200:
     for a in img:
         src = a.get('src')
         if src.startswith("//"):
-            test = "http:" + src
+            src = "http:" + src
         elif src.startswith("http"):
-            test = src
+            src = src
         else:
-            test = url + "/" + src
+            src = url + "/" + src
 
-        file = urllib.urlopen(test)
+        file = urllib.urlopen(src)
         size = file.headers.get("content-length")
         file.close()
         total_size += int(size)
